@@ -1,0 +1,11 @@
+logging:
+  level:
+    web: debug
+    root: debug
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: statCollection
+    password: root
+    url: jdbc:postgresql://localhost:5432/statCollection
