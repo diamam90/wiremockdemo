@@ -4,8 +4,14 @@ logging:
     root: debug
 
 spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
   datasource:
     driver-class-name: org.postgresql.Driver
     username: statCollection
     password: root
     url: jdbc:postgresql://localhost:5432/statCollection
+
