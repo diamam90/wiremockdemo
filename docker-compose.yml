@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  wiremockdemo:
+    image: wiremockdemo
+    ports:
+      - 3000:3000
+    working_dir: /wiremockDemo
+    links:
+      - postgres
+  mockmockmock:
+    image: mockmockmock
+    ports:
+      - 8080:8000
+    working_dir: /mockmockmock
+  postgres:
+    restart: always
+    image: postgres:14.4
+    volumes:
+      - todo-postgres-data:/var/lib/postgresql
+    environment:
+      POSTFRES_USER: statCollection
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: statCollection
+    ports:
+      - 5432:5432
+volumes:
+  todo-postgres-data:
+
