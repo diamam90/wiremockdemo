@@ -1,29 +1,27 @@
-version: "3.8"
+version: '2'
 
 services:
-  wiremockdemo:
+  server:
     image: wiremockdemo
+    container_name: app
     ports:
       - 3000:3000
     links:
-      - postgres
-  mockmockmock:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/statCollection
+      - SPRING_DATASOURCE_USER=statCollection
+      - SPRING_DATASOURCE_PASSWORD=root
+  mock:
     image: mockmockmock
+    container_name: mock
     ports:
       - 8080:8000
-    working_dir: /mockmockmock    
-  postgres:
-    container_name: postgres
-    restart: always
+  db:
     image: postgres:14.4
-    volumes:
-      - todo-postgres-data:/var/lib/postgresql
+    container_name: db
     environment:
       - POSTGRES_USER=statCollection
       - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=statCollection
     ports:
       - 5432:5432
-volumes:
-  todo-postgres-data:
-
